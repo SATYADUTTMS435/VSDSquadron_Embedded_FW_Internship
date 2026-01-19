@@ -10,8 +10,8 @@ including UART communication and GPIO pin control on the VSDSquadron Mini board.
 ### Setup
 - **Interface:** Debug UART via WCH-Link
 - **Serial Port:** COM3
-- **Baud Rate:** 9600
-- **Terminal Tool:** PuTTY / Serial Monitor
+- **Baud Rate:** 115200
+- **Terminal Tool:** PuTTY 
 
 ### Observation
 - After pressing the RESET button on the board, UART output is printed.
@@ -23,9 +23,9 @@ including UART communication and GPIO pin control on the VSDSquadron Mini board.
 
 ### Proof
 - Screenshot showing 10+ UART messages:
-  - `images/uart/uart_output.png`
+  - `images/uart/IMG20260119230338.jpg`
 - Video showing reset and UART output:
-  - `videos/uart/uart_reset_output.mp4`
+  - `videos/uart/VID_20260119234732.mp4`
 
 ---
 
@@ -34,17 +34,17 @@ including UART communication and GPIO pin control on the VSDSquadron Mini board.
 ### Setup
 - **GPIO Pin:** PD6
 - **Firmware Mapping:** GPIOD, GPIO_Pin_6
-- **Hardware:** On-board blue LED
+- **Hardware:** On-board blue LED and an external yellow LED connected through 220ohm resistor.
 
 ### Observation
 - GPIO pin configured as output.
-- The on-board blue LED toggles periodically, producing a visible blink.
+- The on-board blue LED and yellow LED toggles periodically, producing a visible blink.
 
 ### Proof
 - Photo of board with LED:
-  - `images/gpio/gpio_led_pd6.jpg`
+  - `images/gpio/IMG20260119230033.jpg`
 - Video showing LED blinking:
-  - `videos/gpio/gpio_led_blink.mp4`
+  - `videos/gpio/VID_20260119235101.mp4`
 
 ---
 
