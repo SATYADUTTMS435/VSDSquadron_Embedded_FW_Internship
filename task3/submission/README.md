@@ -44,7 +44,7 @@ All GPIO operations are performed using the GPIO driver library, and no hardware
 ---
 
 ## UART Configuration
-- Baud rate:115200
+- Baud rate: 115200
 - Serial Port : COM3
 - Interface: On-board UART via USB
 - Used for startup and status messages
