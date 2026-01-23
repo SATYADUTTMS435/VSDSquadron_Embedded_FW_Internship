@@ -38,9 +38,9 @@ demonstrating a reusable GPIO driver library and a working application on the VS
 
 ### Proof
 - Photo of board with LED connections:
-  - `images/gpio/<gpio_image_name>.jpg`
+  - `media/<gpio_image_name>.jpg`
 - Video showing startup delay and LED disco pattern:
-  - `videos/gpio/<gpio_video_name>.mp4`
+  - `media/<gpio_video_name>.mp4`
 
 ---
 
