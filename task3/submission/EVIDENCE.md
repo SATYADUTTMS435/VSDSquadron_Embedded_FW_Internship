@@ -27,12 +27,12 @@ demonstrating a reusable GPIO driver library and a working application on the VS
 ### Setup
 - **GPIO Pins Used:** PD2, PD3, PD4  
 - **Firmware Mapping:** GPIOD, GPIO_Pin_2 / GPIO_Pin_3 / GPIO_Pin_4  
-- **Hardware:** External LEDs connected to GPIO pins using current-limiting resistors  
+- **Hardware:** External LEDs connected to GPIO pins
 - **Input:** On-board push button  
 
 ### Observation
 - GPIO pins are configured using a reusable GPIO driver library.
-- After reset, the firmware waits for a startup delay and then begins toggling multiple LEDs in a disco pattern.
+- After reset, the firmware waits for a startup delay of 3 seconds and then begins toggling multiple LEDs in a disco pattern.
 - LED toggling is controlled using GPIO APIs (`gpio_init`, `gpio_toggle`, `gpio_read`).
 - Button input is read correctly and controls LED behavior.
 
