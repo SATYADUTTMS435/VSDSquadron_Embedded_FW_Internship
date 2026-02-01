@@ -1,72 +1,78 @@
-# Task-4: Event Queue Framework + GPIO Application  
-VSDSquadron Mini Embedded FW Internship
+# Task-4: Event Queue–Based Embedded System
+VSDSquadron Mini | Embedded Firmware Internship
 
-## Project Overview
-This project implements a **priority-based Event Queue framework** on the VSDSquadron Mini RISC-V board and demonstrates it using a real hardware application.
+## Project Description
+This project implements an **event-driven embedded system** on the VSDSquadron Mini (CH32V003 RISC-V MCU).  
+The system uses a **FIFO-based event queue** to decouple event generation from event handling, mimicking **operating system scheduling behavior** in a **bare-metal environment** (no RTOS).
 
-Multiple firmware modules (UART, GPIO, Event Queue) are integrated to simulate an **OS-like event-driven architecture**, where events are produced and consumed asynchronously.
-
-The application clearly separates:
-- **Event producers**
-- **Event dispatcher (consumer)**
-- **Hardware actions**
-
-This mirrors real embedded firmware and computer-architecture style designs.
+The design integrates **UART, GPIO, and an Event Queue framework**, fulfilling Task-4 requirements while maintaining clean API separation and real hardware execution.
 
 ---
 
 ## Drivers Used
-- **UART** – Logging and visibility of system behavior
-- **GPIO** – LED output control
-- **Event Queue** – Priority-based FIFO event management
-
-(Three drivers integrated ✔️)
+- **UART Driver** – System logging and observability
+- **GPIO Driver** – LED control
+- **Event Queue Module** – FIFO-based event storage and dispatch
 
 ---
 
-## Event Queue Design
-Two event types are used:
-- `EVENT_TIMER_TICK` → Low priority  
-- `EVENT_LED_STEP` → High priority  
-
-Events are queued by producers at different rates and handled later by a dispatcher, demonstrating:
-- Queueing vs handling decoupling
-- Priority-based servicing
-- Real-time embedded behavior
+## Event Types
+- `EVENT_TIMER_TICK`
+- `EVENT_LED_STEP`
 
 ---
 
-## Application Behavior
-- Firmware starts and prints a startup message
-- Events are queued continuously:
-  - Timer events (low priority)
-  - LED step events (high priority)
-- Dispatcher runs slower than producers
-- High-priority LED events are handled first
-- LED toggles only when LED events are handled
-- UART logs clearly show:
-  - When events are **queued**
-  - When events are **handled**
-  - Hardware action taken
+## System Architecture (Theory)
+
+### 1. Event Producers
+Event producers are code sections that **generate events only**.
+They do **not** perform hardware actions.
+
+In this project:
+- Timer logic generates `EVENT_TIMER_TICK`
+- LED logic generates `EVENT_LED_STEP`
+
+Events are pushed into a FIFO queue.
+
+This is equivalent to **interrupts or tasks becoming ready** in an operating system.
 
 ---
 
-## GPIO Configuration
-- **LED Pin:** PD5  
-- **Mode:** Output  
-- LED toggles only when `EVENT_LED_STEP` is handled
+### 2. Event Queue (FIFO)
+- Events are stored in **First-In First-Out order**
+- Multiple events can accumulate before being processed
+- No priority scheduling is implemented in this version
+
+This FIFO queue directly represents an **OS ready queue**.
 
 ---
 
-## UART Configuration
-- **Interface:** Debug UART via WCH-Link
-- **Baud Rate:** 115200
-- **Terminal:** PuTTY / Arduino Serial Monitor
+### 3. Dispatcher (Event Consumer)
+The dispatcher:
+- Runs slower than producers
+- Pulls one event at a time from the queue
+- Executes actions based on event type
+
+This mimics a **cooperative scheduler** where tasks are executed when CPU time is available.
 
 ---
 
-## Build & Flash Steps
-```bash
-pio run
-pio run --target upload
+## OS Scheduling Analogy (Important Theory)
+
+| OS Concept | Implemented Here |
+|-----------|------------------|
+| Interrupt / Task | Event Producer |
+| Ready Queue | FIFO Event Queue |
+| Scheduler | Dispatcher Loop |
+| Context Execution | Event Handler |
+| Cooperative Multitasking | Time-sliced main loop |
+
+This demonstrates **how an OS works internally**, without using an RTOS.
+
+---
+
+## Why Queued and Handled Are Separated
+- Events are **queued fast**
+- Events are **handled slowly**
+- This causes visible interleaving:
 
