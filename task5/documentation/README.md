@@ -47,22 +47,6 @@ UART is used to:
 
 ---
 
-## Folder Structure
-
-task4/
-└── submission/
-├── app/
-│ └── main.c
-├── lib/
-│ ├── gpio.c / gpio.h
-│ ├── uart.c / uart.h
-│ ├── eventq.c / eventq.h
-├── README.md
-└── evidence.md
-
-
----
-
 ## Event Types
 
 The system uses the following events:
