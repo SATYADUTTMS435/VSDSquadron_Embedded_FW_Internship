@@ -54,9 +54,9 @@ This confirms:
 
 ### Proof
 - Image:
-  - `Media/<image_name>.jpg`
+  - `Media/IMG20260130230424[1].jpg`
 - Video:
-  - `Media/<video_name>.mp4`
+  - `Media/VID20260130231132[1].mp4`
 
 ---
 
