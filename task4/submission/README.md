@@ -122,9 +122,33 @@ This creates **scheduler-like behavior** without hardware timers or interrupts.
 
 ---
 
-## Build and Flash
-```bash
-pio run
-pio run --target upload
+## Limitations (Current Version)
+
+-No priority scheduling
+-No interrupt-driven producers
+-FIFO only (no preemption)
+-These are intentional design choices for clarity and learning.
+-How This Can Be Improved
+-Add multi-level priority queues
+-Implement interrupt-based event generation
+-Replace delays with hardware timers
+-Add timestamps to events
+
+---
+
+## Digital VLSI / Verilog Mapping
+
+-This project can be converted into hardware by implementing:
+-FIFO memory (registers / RAM)
+-Event decoder FSM
+-Scheduler FSM
+-GPIO control FSM
+-This directly maps to:
+-Computer Architecture
+-Digital Design
+-RTOS internals
+-Hardware scheduling logic
+
+---
 
 
