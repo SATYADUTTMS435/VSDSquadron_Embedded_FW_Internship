@@ -76,3 +76,55 @@ This demonstrates **how an OS works internally**, without using an RTOS.
 - Events are **handled slowly**
 - This causes visible interleaving:
 
+QUEUED
+QUEUED
+HANDLED
+QUEUED
+HANDLED
+HANDLED
+
+
+This is **intentional** and demonstrates:
+- Deferred execution
+- Queue buildup
+- Scheduling latency
+
+---
+
+## GPIO Behavior
+- **Pin:** PD5
+- **Mode:** Output
+- **Action:** LED toggles only when `EVENT_LED_STEP` is handled
+
+This confirms that **hardware actions occur only during event handling**, not event generation.
+
+---
+
+## UART Configuration
+- **Interface:** Debug UART via WCH-Link
+- **Port:** COM3
+- **Baud Rate:** 115200
+- **Terminal:** PuTTY / Serial Monitor
+
+UART logs show:
+- Event queuing
+- Event handling
+- System flow in real time
+
+---
+
+## Timing Model
+- Software delay creates a base time slice
+- Producers run at different rates
+- Dispatcher runs slower than producers
+
+This creates **scheduler-like behavior** without hardware timers or interrupts.
+
+---
+
+## Build and Flash
+```bash
+pio run
+pio run --target upload
+
+
