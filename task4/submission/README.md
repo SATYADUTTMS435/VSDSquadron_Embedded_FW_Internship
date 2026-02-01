@@ -127,8 +127,9 @@ This creates **scheduler-like behavior** without hardware timers or interrupts.
 - No priority scheduling
 - No interrupt-driven producers
 - FIFO only (no preemption)
-- These are intentional design choices for clarity and learning.
-- How This Can Be Improved
+  
+These are intentional design choices for clarity and learning.
+## How This Can Be Improved
 - Add multi-level priority queues
 - Implement interrupt-based event generation
 - Replace delays with hardware timers
