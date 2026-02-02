@@ -1,4 +1,4 @@
-# Task-4: Event Queue Based Embedded Application  
+# Task-5: Event Queue Based Embedded Application Docs 
 VSDSquadron Mini – Multi-Driver Integration Project
 
 ---
@@ -38,7 +38,7 @@ This approach improves modularity, scalability, and aligns with real-world embed
 
 - **Baud Rate:** 115200  
 - **Port:** COM3 (via WCH-Link)  
-- **Terminal:** PuTTY / PlatformIO Serial Monitor  
+- **Terminal:** PuTTY Serial Monitor  
 
 UART is used to:
 - Log when events are queued
